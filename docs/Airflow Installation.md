@@ -2,7 +2,9 @@
 
 http://www.marknagelberg.com/getting-started-with-airflow-using-docker/
 
-## Docker 설치
+## Docker와 Airflow 설치
+
+### Docker 설치
 
 먼저 Docker를 설치하기 위헤 apt 패키지 매니저 자체를 업데이트한다:
 
@@ -25,14 +27,14 @@ $  sudo apt-get install docker-ce docker-ce-cli containerd.io
 $  sudo docker run hello-world
 ```
 
-## Docker Compose 설치
+### Docker Compose 설치
 
 ```
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-## Airflow 설치
+### Airflow 설치
 
 간단 설치 방법:
 
@@ -44,7 +46,7 @@ $ docker images
 
 더 자세히 설치하려면 https://medium.com/@xnuinside/quick-guide-how-to-run-apache-airflow-cluster-in-docker-compose-615eb8abd67a를 참고
 
-## Airflow 실행
+### Airflow 실행
 
 먼저 dags 폴더를 하나 만든다
 ```
@@ -62,6 +64,8 @@ sudo docker run -d -p 8080:8080 -v /home/ubuntu/dags:/usr/local/airflow/dags puc
 ```
 ![](images/airflow-docker.png)
 
+
+## 기타 
 
 ## Airflow DAG 폴더로 이동하기
 
