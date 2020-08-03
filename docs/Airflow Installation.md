@@ -38,6 +38,8 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 ```
 $ docker pull puckel/docker-airflow
+
+$ docker images
 ```
 
 더 자세히 설치하려면 https://medium.com/@xnuinside/quick-guide-how-to-run-apache-airflow-cluster-in-docker-compose-615eb8abd67a를 참고
