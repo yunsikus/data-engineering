@@ -1,5 +1,7 @@
 아래 설치 명령들은 우분투를 기반으로 한다.
 
+http://www.marknagelberg.com/getting-started-with-airflow-using-docker/
+
 ## Docker 설치
 
 먼저 Docker를 설치하기 위헤 apt 패키지 매니저 자체를 업데이트한다:
@@ -35,7 +37,7 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 간단 설치 방법:
 
 ```
-$ docker pull apache/airflow
+$ docker pull puckel/docker-airflow
 ```
 
 더 자세히 설치하려면 https://medium.com/@xnuinside/quick-guide-how-to-run-apache-airflow-cluster-in-docker-compose-615eb8abd67a를 참고
@@ -47,6 +49,17 @@ sudo docker run -d -p 8080:8080 puckel/docker-airflow webserver
 ```
 ![](images/airflow-docker.png)
 
+## Airflow DAG 폴더로 이동하기
 
+```
+$ sudo docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minutes ago      Up 21 minutes       5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp   angry_wu
+
+$ sudo docker exec -ti angry_wu bash
+airflow@a56dbb111b5b:~$ pwd
+/usr/local/airflow
+airflow@a56dbb111b5b:~$ ls -tl
+```
 
 
