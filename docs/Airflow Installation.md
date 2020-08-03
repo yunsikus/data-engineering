@@ -73,7 +73,34 @@ a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minute
 $ sudo docker exec -ti angry_wu bash
 airflow@a56dbb111b5b:~$ pwd
 /usr/local/airflow
-airflow@a56dbb111b5b:~$ ls -tl
+airflow@a56dbb111b5b:~$ airflow list_dags
+-------------------------------------------------------------------
+DAGS
+-------------------------------------------------------------------
+example_bash_operator
+example_branch_dop_operator_v3
+example_branch_operator
+example_complex
+example_external_task_marker_child
+example_external_task_marker_parent
+example_http_operator
+example_passing_params_via_test_command
+example_pig_operator
+example_python_operator
+example_short_circuit_operator
+example_skip_dag
+example_subdag_operator
+example_subdag_operator.section-1
+example_subdag_operator.section-2
+example_trigger_controller_dag
+example_trigger_target_dag
+example_xcom
+latest_only
+latest_only_with_trigger
+test_utils
+tutorial
+
+
 ```
 
 ## Airflow Container 실행 중단하기
