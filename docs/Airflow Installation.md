@@ -46,10 +46,22 @@ $ docker images
 
 ## Airflow 실행
 
+먼저 dags 폴더를 하나 만든다
 ```
-sudo docker run -d -p 8080:8080 puckel/docker-airflow webserver
+$ pwd
+/home/ubuntu/
+$ mkdir dags
+$ ls -tl
+total 4
+drwxrwxr-x 2 ubuntu ubuntu 4096 Aug  3 02:43 dags
+```
+
+다음으로 이 폴더를 dags 폴더로 지정해서 Airflow를 실행한다.
+```
+sudo docker run -d -p 8080:8080 -v /home/ubuntu/dags:/usr/local/airflow/dags puckel/docker-airflow webserver
 ```
 ![](images/airflow-docker.png)
+
 
 ## Airflow DAG 폴더로 이동하기
 
@@ -62,6 +74,12 @@ $ sudo docker exec -ti angry_wu bash
 airflow@a56dbb111b5b:~$ pwd
 /usr/local/airflow
 airflow@a56dbb111b5b:~$ ls -tl
+```
+
+## Airflow Container 실행 중단하기
+
+```
+$ sudo docker stop angry_wu
 ```
 
 
