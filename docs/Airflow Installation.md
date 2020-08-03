@@ -109,4 +109,10 @@ tutorial
 $ sudo docker stop angry_wu
 ```
 
+## data-engineering repo 받기
+
+```
+$ git clone git@github.com:keeyong/data-engineering.git
+```
+
 
