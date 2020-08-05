@@ -5,7 +5,7 @@ from datetime import datetime
 
 dag = DAG(
 	dag_id = 'my_first_dag',
-	start_date = datetime(2019,1,15),
+	start_date = datetime(2020,8,7),
 	schedule_interval = '0 2 * * *')
 
 def print_hello():
