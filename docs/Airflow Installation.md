@@ -126,7 +126,7 @@ tutorial
 $ sudo docker stop angry_wu
 ```
 
-## data-engineering repo 받기
+## data-engineering repo내의 HelloWorld.py를 Airflow로 올리기
 
 /home/ubuntu에서 아래를 실행
 
