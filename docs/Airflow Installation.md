@@ -140,3 +140,12 @@ $ git clone https://github.com/keeyong/data-engineering.git
 cp data-engineering/dags/HelloWorld.py /home/ubuntu/dags/
 ```
 
+Airflow를 중단하기 위해 Docker Container의 이름을 알아낸다.
+
+```
+$ sudo docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minutes ago      Up 21 minutes       5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp   angry_wu
+
+$ sudo docker stop angry_wu
+```
