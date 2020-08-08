@@ -128,8 +128,15 @@ $ sudo docker stop angry_wu
 
 ## data-engineering repo 받기
 
+/home/ubuntu에서 아래를 실행
+
 ```
 $ git clone https://github.com/keeyong/data-engineering.git
 ```
 
+다음으로 data-engineering/dags/HelloWorld.py를 /home/ubuntu/dags 폴더로 복사
+
+```
+cp data-engineering/dags/HelloWorld.py /home/ubuntu/dags/
+```
 
