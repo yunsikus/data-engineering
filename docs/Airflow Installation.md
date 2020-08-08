@@ -79,54 +79,14 @@ http://호스트이름:8080/
 ## 기타 
 
 
-### Airflow DAG 폴더로 이동하기
-
-"sudo docker ps"를 명령을 실행하여 NAMES 컬럼밑에 나오는 이름을 기억한다. 이를 가지고 "sudo docker exec -ti"으로 컨테이너 안으로 이동한다.
-
-```
-$ sudo docker ps
-CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                        NAMES
-a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minutes ago      Up 21 minutes       5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp   angry_wu
-
-$ sudo docker exec -ti angry_wu bash
-airflow@a56dbb111b5b:~$ pwd
-/usr/local/airflow
-airflow@a56dbb111b5b:~$ airflow list_dags
--------------------------------------------------------------------
-DAGS
--------------------------------------------------------------------
-example_bash_operator
-example_branch_dop_operator_v3
-example_branch_operator
-example_complex
-example_external_task_marker_child
-example_external_task_marker_parent
-example_http_operator
-example_passing_params_via_test_command
-example_pig_operator
-example_python_operator
-example_short_circuit_operator
-example_skip_dag
-example_subdag_operator
-example_subdag_operator.section-1
-example_subdag_operator.section-2
-example_trigger_controller_dag
-example_trigger_target_dag
-example_xcom
-latest_only
-latest_only_with_trigger
-test_utils
-tutorial
-```
-
-## Airflow Container 실행 중단하기
+### Airflow Container 실행 중단하기
 
 먼저 Airflow Docker instance의 이름을 알아낸다 (앞서 sudo docker ps 명령을 사용하여 이름을 알아낸다) 
 ```
 $ sudo docker stop angry_wu
 ```
 
-## data-engineering repo내의 HelloWorld.py를 Airflow로 올리기
+### data-engineering repo내의 HelloWorld.py를 Airflow로 올리기
 
 /home/ubuntu에서 아래를 실행
 
@@ -154,3 +114,67 @@ Airflow를 재실행한다.
 ```
 sudo docker run -d -p 8080:8080 -v /home/ubuntu/dags:/usr/local/airflow/dags puckel/docker-airflow webserver
 ```
+
+### Docker 내 Airflow DAG 폴더로 이동하기
+
+이는 DAG 개발을 위해서 필요하다. 먼저 "sudo docker ps"를 명령을 실행하여 NAMES 컬럼밑에 나오는 이름을 기억한다. 
+
+```
+$ sudo docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minutes ago      Up 21 minutes       5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp   angry_wu
+```
+
+이 이름을 가지고 "sudo docker exec -ti"으로 컨테이너 안으로 이동한다.
+
+```
+$ sudo docker exec -ti angry_wu bash
+airflow@a56dbb111b5b:~$ pwd
+/usr/local/airflow
+airflow@a56dbb111b5b:~$ cd dags
+```
+#### 개발
+
+여기에서 ls -tl과 같은 명령을 실행해보면 HelloWorld.py를 볼 수 있어야 한다 (앞서 과정을 거쳤다면). 새로운 DAG 개발을 원한다면 여기서 파이썬 코드 파일을 만든다. 근데 Docker는 기본적으로 아무런 에디터 설치가 되어 있지 않다. 아래와 같이 vim을 설치해 사용한다:
+
+```
+apt-get update
+apt-get install vim
+```
+
+
+#### Airflow 명령 실행
+
+여기서 여러가지 airflow 명령어들을 실행해볼 수 있다. 예를 들어 list_dags를 실행하면 현재 설치되어 있는 모든 DAG들이 리스트된다.
+```
+airflow@a56dbb111b5b:~$ airflow list_dags
+-------------------------------------------------------------------
+DAGS
+-------------------------------------------------------------------
+example_bash_operator
+example_branch_dop_operator_v3
+example_branch_operator
+example_complex
+example_external_task_marker_child
+example_external_task_marker_parent
+example_http_operator
+example_passing_params_via_test_command
+example_pig_operator
+example_python_operator
+example_short_circuit_operator
+example_skip_dag
+example_subdag_operator
+example_subdag_operator.section-1
+example_subdag_operator.section-2
+example_trigger_controller_dag
+example_trigger_target_dag
+example_xcom
+latest_only
+latest_only_with_trigger
+test_utils
+tutorial
+my_first_dag
+```
+
+ - "airflow list_tasks DAG이름"을 실행하면 DAG에 속한 태스크들의 이름이 모두 나열된다. 
+ - 특정 태스트를 실행하고 싶다면 예를 들어 task ID가 print_hello라면 "airflow test DAG이름 print_hello 2020-08-09" 이렇게 실행하면 된다. 여기서 주의할 점은 2020-08-09의 경우 DAG의 start_date보다는 뒤어야 하지만 현재 시간보다 미래이면 안된다.
