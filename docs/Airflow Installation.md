@@ -149,3 +149,8 @@ a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minute
 
 $ sudo docker stop angry_wu
 ```
+
+Airflow를 재실행한다.
+```
+sudo docker run -d -p 8080:8080 -v /home/ubuntu/dags:/usr/local/airflow/dags puckel/docker-airflow webserver
+```
