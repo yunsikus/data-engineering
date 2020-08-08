@@ -11,6 +11,7 @@ $ sudo apt-get update
 $ sudo apt install docker.io
 $ sudo systemctl start docker
 $ sudo systemctl enable docker
+$ docker --version
 ```
 
 다음으로 hello-world를 실행하여 설치가 제대로 되었는지 확인한다. 출력문에 "Hello from Docker!"가 있어야 한다.
