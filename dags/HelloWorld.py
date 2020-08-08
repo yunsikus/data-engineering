@@ -9,9 +9,11 @@ dag = DAG(
 	schedule_interval = '0 2 * * *')
 
 def print_hello():
+	print("hello!")
 	return "hello!"
 
 def print_goodbye():
+	print("goodbye!")
 	return "goodbye!"
 
 print_hello = PythonOperator(
