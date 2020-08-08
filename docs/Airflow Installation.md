@@ -4,23 +4,13 @@ http://www.marknagelberg.com/getting-started-with-airflow-using-docker/
 
 ## Docker 설치
 
-먼저 Docker를 설치하기 위헤 apt 패키지 매니저 자체를 업데이트한다:
+먼저 Docker를 설치하기 위헤 apt 패키지 매니저 자체를 업데이트하고 설치를 진행한다.
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install -y apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-$ sudo apt-key fingerprint 0EBFCD88
-$ sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-$ sudo apt-get update
-```
-
-이제 Docker를 설치한다.
-
-```
-$  sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+$ sudo apt install docker.io
+$ sudo systemctl start docker
+$ sudo systemctl enable docker
 ```
 
 다음으로 hello-world를 실행하여 설치가 제대로 되었는지 확인한다. 출력문에 "Hello from Docker!"가 있어야 한다.
