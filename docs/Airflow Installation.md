@@ -115,6 +115,15 @@ Airflow를 재실행한다.
 sudo docker run -d -p 8080:8080 -v /home/ubuntu/dags:/usr/local/airflow/dags puckel/docker-airflow webserver
 ```
 
+### 이미 실행된 Airflow Docker Container를 같은 인자로 다시 재실행하고 싶다면 
+
+awesome_shaw가 Container의 이름인 경우 아래와 같이 실행한다.
+
+```
+sudo docker restart awesome_shaw
+```
+
+
 ### Docker 내 Airflow DAG 폴더로 이동하기
 
 이는 DAG 개발을 위해서 필요하다. 먼저 "sudo docker ps"를 명령을 실행하여 NAMES 컬럼밑에 나오는 이름을 기억한다. 
