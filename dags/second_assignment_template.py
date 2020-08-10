@@ -53,7 +53,7 @@ def get_Redshift_connection():
 def etl():
     link = "https://s3-geospatial.s3-us-west-2.amazonaws.com/name_gender.csv"
     data = extract(link)
-    lines = transform(data
+    lines = transform(data)
     load(lines)
 
 	 # 여기에 코드를 기록
