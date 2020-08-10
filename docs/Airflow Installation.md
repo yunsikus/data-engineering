@@ -72,7 +72,16 @@ http://호스트이름:8080/
 
 ### Airflow Container 실행 중단하기
 
-먼저 Airflow Docker instance의 이름을 알아낸다 (앞서 sudo docker ps 명령을 사용하여 이름을 알아낸다) 
+먼저 Airflow Docker instance의 이름을 알아낸다. "sudo docker ps"를 명령을 실행하여 NAMES 컬럼밑에 나오는 이름을 기억한다. 여기서는 angry_wu인데 매번 바뀐다는 점에 유의한다.
+
+```
+$ sudo docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+a56dbb111b5b        puckel/docker-airflow   "/entrypoint.sh webs…"   21 minutes ago      Up 21 minutes       5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp   angry_wu
+```
+
+이 이름을 가지고 중단한다
+
 ```
 $ sudo docker stop angry_wu
 ```
