@@ -2,6 +2,8 @@ from airflow import DAG
 from airflow.operators import PythonOperator
 from datetime import datetime
 import requests
+import psycopg2
+
 
 dag_second_assignment = DAG(
 	dag_id = 'second_assignment',
