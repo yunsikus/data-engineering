@@ -1,4 +1,3 @@
-
 from airflow import DAG
 from airflow.operators import PythonOperator
 from datetime import datetime
@@ -7,7 +6,7 @@ import logging
 import psycopg2
 
 def get_Redshift_connection():
-	host = "grepp-data.cduaw970ssvt.ap-northeast-2.redshift.amazonaws.com"
+    host = "grepp-data.cduaw970ssvt.ap-northeast-2.redshift.amazonaws.com"
     redshift_user = "gafield8785"
     redshift_pass = "Gafield87851!"
     port = 5439
