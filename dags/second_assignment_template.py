@@ -44,7 +44,7 @@ def load(lines):
     for l in lines:
         if l != '':
             (name, gender) = l.split(",")
-            sql += "INSERT INTO gafield8785.name_gender VALUES ('{name}', '{gender}').format(name,gender);"
+            sql += "INSERT INTO gafield8785.name_gender VALUES ('{name}', '{gender}');".format(name,gender)
     sql += "COMMIT;"
     cur.execute(sql)
     logging.info(sql)
